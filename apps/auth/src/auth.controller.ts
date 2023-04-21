@@ -9,15 +9,11 @@ export class AuthController {
 
   @MessagePattern({ cmd: 'signUp' })
   async signUp(@Payload() authCredentialsDto: AuthCredentialsDto) {
-    const user = await this.authService.signUp(authCredentialsDto);
-    return {
-      user,
-    };
+    return await this.authService.signUp(authCredentialsDto);
   }
 
   @MessagePattern({ cmd: 'signIn' })
   async signIn(authCredentialsDto: AuthCredentialsDto) {
-    const user = await this.authService.signIn(authCredentialsDto);
-    return user;
+  return await this.authService.signIn(authCredentialsDto);
   }
 }
